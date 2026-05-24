@@ -2,12 +2,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:lms/core/data/storage/token_service.dart';
 import 'package:lms/core/errors/error_handler.dart';
-import 'package:lms/core/models/login.dart';
-import 'package:lms/core/models/sign_up.dart';
-import 'package:lms/core/models/token.dart';
+import 'package:lms/features/auth/models/login.dart';
+import 'package:lms/features/auth/models/sign_up.dart';
+import 'package:lms/features/auth/models/token.dart';
 import 'package:lms/core/errors/error_handler.dart';
-import 'package:lms/core/models/token.dart';
-import 'package:lms/core/models/verify_otp.dart';
+import 'package:lms/features/auth/models/token.dart';
+import 'package:lms/features/auth/models/verify_otp.dart';
 import 'package:lms/core/networks/dio_client.dart';
 import 'package:lms/core/typedef/typedef.dart';
 
@@ -24,7 +24,7 @@ class AuthRepository {
       );
       return Right(response.data["detail"]);
     } catch (e) {
-      return Left(ErrorHandler.handelError(e));
+      return Left(ErrorHandler.handleError(e));
     }
   }
 
@@ -56,7 +56,7 @@ class AuthRepository {
       await TokenService.instance.save(token);
       return Right(response.data["detail"]);
     } catch (e) {
-      return Left(ErrorHandler.handelError(e));
+      return Left(ErrorHandler.handleError(e));
     }
   }
 
@@ -70,7 +70,7 @@ class AuthRepository {
       await TokenService.instance.save(token);
       return Right(response.data);
     } catch (e) {
-      return Left(ErrorHandler.handelError(e));
+      return Left(ErrorHandler.handleError(e));
     }
   }
 }

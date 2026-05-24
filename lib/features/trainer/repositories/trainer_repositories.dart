@@ -21,7 +21,7 @@ class TrainerRepository {
 
       return Right("sucess");
     } catch (e) {
-      return Left(ErrorHandler.handelError(e));
+      return Left(ErrorHandler.handleError(e));
     }
   }
    Future<Either<String, TrainerProfile>> getMyProfile() async {
@@ -31,7 +31,7 @@ class TrainerRepository {
       final TrainerProfile profile = TrainerProfile.fromMap(response.data);
       return Right(profile);
     } catch (e) {
-      return Left(ErrorHandler.handelError(e));
+      return Left(ErrorHandler.handleError(e));
     }
   }
 }

@@ -13,11 +13,12 @@ class VerifyOtpSuccess extends VerifyOtpState {
 }
 
 class VerifyOtpFailure extends VerifyOtpState {
-  final String error;
+ final String msg;
 
-  VerifyOtpFailure(this.error);
+   VerifyOtpFailure({required this.msg});
+  @override
+  List<Object> get props => [msg];
 }
-
 
 class ResendOtpSuccess extends VerifyOtpState {
   final String message;

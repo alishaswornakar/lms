@@ -15,7 +15,7 @@ class CourseRepository {
 
       return Right(categories);
     } catch (e) {
-      return Left(ErrorHandler.handelError(e));
+      return Left(ErrorHandler.handleError(e));
     }
   }
 }

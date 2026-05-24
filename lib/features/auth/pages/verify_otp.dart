@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lms/core/extension/context_extension.dart';
 import 'package:lms/features/auth/blocs/verify_otp/verify_otp_bloc.dart';
-import 'package:lms/features/auth/pages/login_page.dart';
+import 'package:lms/features/auth/blocs/verify_otp/verify_otp_event.dart';
+import 'package:lms/features/auth/models/verify_otp.dart';
+
 import 'package:lms/features/home/pages/home.dart';
 
 
@@ -47,7 +49,7 @@ class VerifyOtp extends StatelessWidget {
                       );
                     } else if (state is VerifyOtpFailure) {
                       context.pop();
-                      context.showSnackbar(state.error);
+                      context.showSnackbar(state.msg);
                     }
                   },
                   child: MaterialPinField(
@@ -55,7 +57,12 @@ class VerifyOtp extends StatelessWidget {
 
                     onCompleted: (pin) {
                       context.read<VerifyOtpBloc>().add(
-                        VerifyOtpSubmitted(email: email, otp: pin),
+                        OtpEvent(
+                          otpRequestModel: VerifyOtpRequestModel(
+                            email: email,
+                            otp: pin,
+                          ),
+                        ),
                       );
                     },
 

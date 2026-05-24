@@ -1,23 +1,18 @@
-part of 'verify_otp_bloc.dart';
 
- class VerifyOtpEvent {}
 
-class VerifyOtpSubmitted extends VerifyOtpEvent {
-  final String email;
-  final String otp;
+import 'package:equatable/equatable.dart';
+import 'package:lms/features/auth/models/verify_otp.dart';
 
-  VerifyOtpSubmitted({
-    required this.email,
-    required this.otp,
-  });
-}
-  class ResendOtpRequested extends VerifyOtpEvent {
-  final String email;
+class OtpEvent extends Equatable {
+  const OtpEvent({required this.otpRequestModel});
+  final VerifyOtpRequestModel otpRequestModel;
 
-  ResendOtpRequested({
-    required this.email,
-  });
+  @override
+  List<Object> get props => [otpRequestModel];
+
+  String get email => otpRequestModel.email;
+
+  String get otp => otpRequestModel.otp;
 }
 
-  List<Object> get props => [];
 

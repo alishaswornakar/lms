@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:lms/core/data/storage/token_service.dart';
 import 'package:lms/core/errors/error_handler.dart';
-import 'package:lms/core/models/profile.dart';
+import 'package:lms/features/auth/models/profile.dart';
 import 'package:lms/core/networks/dio_client.dart';
 
 class ProfileRepository {
@@ -21,7 +21,7 @@ class ProfileRepository {
 
       return Right(profile);
     } catch (e) {
-      return Left(ErrorHandler.handelError(e));
+      return Left(ErrorHandler.handleError(e));
     }
   }
 }

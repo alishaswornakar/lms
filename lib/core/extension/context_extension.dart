@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
-extension SnackBarExtension on BuildContext {
+extension ContextExtesion on BuildContext {
   void showSnackbar(String msg) {
     ScaffoldMessenger.of(this).showSnackBar(SnackBar(content: Text(msg)));
   }
-
+  
   void showLoadingDialog() {
     showDialog(
       context: this,
@@ -14,7 +15,10 @@ extension SnackBarExtension on BuildContext {
             height: 60,
             width: 60,
             color: Colors.white,
-            child: CircularProgressIndicator(),
+            child: LoadingAnimationWidget.inkDrop(
+              color: const Color.fromARGB(255, 203, 59, 255),
+              size: 50,
+            ),
           ),
         );
       },
@@ -24,4 +28,12 @@ extension SnackBarExtension on BuildContext {
   void pop() {
     Navigator.of(this).pop();
   }
+
+  void pushReplacement(Widget page) {
+    Navigator.pushReplacement(
+      this,
+      MaterialPageRoute(builder: (context) => page),
+    );
+  }
+  
 }

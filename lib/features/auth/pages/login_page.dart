@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lms/core/widgets/custom_text_field.dart';
 import 'package:lms/core/widgets/primary_button.dart';
 import 'package:lms/features/auth/blocs/login/login_bloc.dart';
-import 'package:lms/core/models/login.dart';
+import 'package:lms/features/auth/models/login.dart';
 import 'package:lms/features/auth/pages/sign_up.dart';
 
 

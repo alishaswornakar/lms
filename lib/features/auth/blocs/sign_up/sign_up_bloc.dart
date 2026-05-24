@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lms/core/models/sign_up.dart';
+import 'package:lms/features/auth/models/sign_up.dart';
 import 'package:lms/core/networks/dio_client.dart';
 import 'package:lms/features/auth/repositories/auth_repository.dart';       
 

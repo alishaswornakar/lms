@@ -1,52 +1,53 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-part 'verify_otp_event.dart';
+import 'package:lms/features/auth/blocs/verify_otp/verify_otp_event.dart';
+import 'package:lms/features/auth/models/verify_otp.dart';
+import 'package:lms/features/auth/repositories/auth_repository.dart';
+
+
 part 'verify_otp_state.dart';
-class VerifyOtpBloc extends Bloc<VerifyOtpEvent, VerifyOtpState> {
+
+class VerifyOtpBloc extends Bloc<OtpEvent, VerifyOtpState> {
+  final AuthRepository _authRepository = AuthRepository();
+
   VerifyOtpBloc() : super(VerifyOtpInitial()) {
-    on<VerifyOtpSubmitted>(_verifyOtp);
-  }
 
-  Future<void> _verifyOtp(
-    VerifyOtpSubmitted event,
-    Emitter<VerifyOtpState> emit,
-  ) async {
-    emit(VerifyOtpLoading());
+    on<OtpEvent>((event, emit) async {
 
-    try {
-      await Future.delayed(const Duration(seconds: 2));
+      emit(VerifyOtpLoading());
 
-      /// Example validation
-      if (event.otp == "123456") {
-        emit(VerifyOtpSuccess("OTP Verified Successfully"));
-      } else {
-        emit(VerifyOtpFailure("Invalid OTP"));
-      }
-    } catch (e) {
-      emit(VerifyOtpFailure(e.toString()));
-    }
-  }
-
-   Future<void> _resendOtp(
-    ResendOtpRequested event,
-    Emitter<VerifyOtpState> emit,
-  ) async {
-    emit(VerifyOtpLoading());
-
-    try {
-      await Future.delayed(const Duration(seconds: 2));
-
-      emit(
-        ResendOtpSuccess(
-          "OTP resent to ${event.email}",
+      final data = await _authRepository.verifyopt(
+        verify: VerifyOtpRequestModel(
+          email: event.email,
+          otp: event.otp,
         ),
       );
-    } catch (e) {
-      emit(
-        VerifyOtpFailure(
-          e.toString(),
-        ),
+
+      data.fold(
+        (l) {
+          emit(VerifyOtpFailure(msg: l));
+        },
+        (r) async {
+
+          // Uncomment if saving token
+          // final pref = await SharedPreferences.getInstance();
+
+          // await pref.setString(
+          //   "access_token",
+          //   r.token.access,
+          // );
+
+          // await pref.setString(
+          //   "refresh_token",
+          //   r.token.refresh,
+          // );
+
+          emit(
+            VerifyOtpSuccess(
+              "OTP Verified Successfully",
+            ),
+          );
+        },
       );
-    }
+    });
   }
-  
 }

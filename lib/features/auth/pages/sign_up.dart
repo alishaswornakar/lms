@@ -6,7 +6,7 @@ import 'package:lms/core/widgets/custom_text_field.dart';
 import 'package:lms/core/widgets/primary_button.dart';
 import 'package:lms/features/auth/blocs/sign_up/sign_up_bloc.dart';
 
-import 'package:lms/core/models/sign_up.dart';
+import 'package:lms/features/auth/models/sign_up.dart';
 import 'package:lms/features/auth/pages/login_page.dart';
 import 'package:lms/features/auth/pages/verify_otp.dart';
 

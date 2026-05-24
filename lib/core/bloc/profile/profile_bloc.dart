@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lms/core/data/repositories/profile_repositories.dart';
-import 'package:lms/core/models/profile.dart';
+import 'package:lms/features/auth/models/profile.dart';
 
 part 'profile_event.dart';
 part 'profile_state.dart';

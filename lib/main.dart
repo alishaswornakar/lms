@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => SignUpBloc()),
-      //BlocProvider(create: (context) => OtpBloc()),
+      
         BlocProvider(create: (context) => VerifyOtpBloc()),
         BlocProvider(create: (context) => ProfileBloc()),
         BlocProvider(create: (context) => LoginBloc()),

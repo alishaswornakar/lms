@@ -1,4 +1,4 @@
-import 'package:lms/core/models/profile.dart';
+import 'package:lms/features/auth/models/profile.dart';
 
 class TrainerProfile {
   final String id;
