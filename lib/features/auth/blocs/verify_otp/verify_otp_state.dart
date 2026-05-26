@@ -1,38 +1,23 @@
 part of 'verify_otp_bloc.dart';
 
-sealed class VerifyOtpState {
+sealed class VerifyOtpState extends Equatable {
   const VerifyOtpState();
 
   @override
   List<Object> get props => [];
 }
 
-class VerifyOtpInitial extends VerifyOtpState {}
+final class VerifyOtpInitial extends VerifyOtpState {}
 
-class VerifyOtpLoading extends VerifyOtpState {}
+final class VerifyOtpLoading extends VerifyOtpState {}
 
-class VerifyOtpSuccess extends VerifyOtpState {
-  final String message;
+final class VerifyOtpLoaded extends VerifyOtpState {}
 
-  VerifyOtpSuccess(this.message);
-}
+final class VerifyOtpFailure extends VerifyOtpState {
+  final String msg;
 
-class VerifyOtpFailure extends VerifyOtpState {
- final String msg;
+  const VerifyOtpFailure({required this.msg});
 
-   VerifyOtpFailure({required this.msg});
   @override
   List<Object> get props => [msg];
-}
-
-class ResendOtpSuccess extends VerifyOtpState {
-  final String message;
-
-  ResendOtpSuccess(this.message);
-}
-
-class ResendOtpFailure extends VerifyOtpState {
-  final String error;
-
-  ResendOtpFailure(this.error);
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lms/core/bloc/profile/profile_bloc.dart';
-import 'package:lms/features/auth/models/profile.dart';
+import 'package:lms/core/models/profile.dart';
 
 import 'package:lms/features/trainer/pages/apply_trainer.dart';
 import 'package:lms/features/trainer/pages/trainer.dart';

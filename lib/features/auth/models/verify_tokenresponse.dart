@@ -1,4 +1,4 @@
-import 'package:lms/features/auth/models/token.dart';
+import 'package:lms/core/models/token.dart';
 
 
 class VerifyTokenResponseModel {

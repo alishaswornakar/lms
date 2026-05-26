@@ -14,7 +14,7 @@ final class MyTrainerProfileLoading extends MyTrainerProfileState {}
 final class MyTrainerProfileLoaded extends MyTrainerProfileState {
   final TrainerProfile trainer;
 
-  const MyTrainerProfileLoaded({required this.trainer});
+  MyTrainerProfileLoaded({required this.trainer});
   @override
   List<Object> get props => [trainer];
 }
@@ -22,7 +22,7 @@ final class MyTrainerProfileLoaded extends MyTrainerProfileState {
 final class MyTrainerProfileFailure extends MyTrainerProfileState {
   final String msg;
 
-   const MyTrainerProfileFailure({required this.msg});
+  MyTrainerProfileFailure({required this.msg});
 
   @override
   List<Object> get props => [msg];

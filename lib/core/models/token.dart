@@ -9,10 +9,4 @@ class TokenModel {
       refreshToken: map['refresh_token'],
     );
   }
-
-  String? get access => null;
-
-  String? get refresh => null;
-
-  get token => null;
 }

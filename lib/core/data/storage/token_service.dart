@@ -1,8 +1,9 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:lms/features/auth/models/token.dart';
+import 'package:lms/core/models/token.dart';
 
-final String _accessToken = "access_token";
-final String _refreshToken = "refresh_token";
+
+final String _accessKey = "Access";
+final String _refreshKey = "Refresh";
 
 class TokenService {
   TokenService._();
@@ -14,31 +15,29 @@ class TokenService {
   Future<void> save(TokenModel tokenModel) async {
     try {
       await Future.wait([
-        _secureStorage.write(key: _accessToken, value: tokenModel.access),
-        _secureStorage.write(key: _refreshToken, value: tokenModel.refresh),
+        _secureStorage.write(key: _accessKey, value: tokenModel.accessToken),
+        _secureStorage.write(key: _refreshKey, value: tokenModel.refreshToken),
       ]);
     } catch (e) {
-      throw "failed to save token $e";
+      throw "Error saving token due to : $e";
     }
   }
 
   Future<String?> getAccessToken() async {
-    final token = await _secureStorage.read(key: _accessToken);
-    if (token == null) {
-      return "token is null";
-    }
+    // await Future.delayed(Duration(seconds: 3));
+    final token = await _secureStorage.read(key: _accessKey);
+    // if (token == null) {
+    //   throw "Your token is null";
+    // }
     return token;
   }
 
-  Future<String?> getRefreshToken() async {
-    final token = await _secureStorage.read(key: _refreshToken);
-    if (token == null) {
-      return "refresh token is null";
+  Future<void> clearToken() async {
+    try {
+      await _secureStorage.deleteAll();
+    } catch (e) {
+      print(e);
+      throw "Unable to delete local data";
     }
-    return token;
-  }
-
-  Future<void> clear() async {
-    await _secureStorage.deleteAll();
   }
 }

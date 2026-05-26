@@ -1,4 +1,4 @@
-import 'package:lms/features/auth/models/profile.dart';
+import 'package:lms/core/models/profile.dart';
 
 class TrainerProfile {
   final String id;
@@ -7,7 +7,7 @@ class TrainerProfile {
   final int experienceYears;
   final Review? review;
   final Suspension? suspension;
-  final Profile user;
+  final User user;
 
   TrainerProfile({
     required this.id,
@@ -29,7 +29,7 @@ class TrainerProfile {
         ? null
         : Suspension.fromMap(json["suspension"]),
 
-    user: Profile.fromMap(json['user']),
+    user: User.fromMap(json['user']),
   );
 }
 

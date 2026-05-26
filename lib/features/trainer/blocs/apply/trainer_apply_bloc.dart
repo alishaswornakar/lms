@@ -9,14 +9,12 @@ part 'trainer_apply_state.dart';
 class TrainerApplyBloc extends Bloc<TrainerApplyEvent, TrainerApplyState> {
   TrainerApplyBloc() : super(TrainerApplyInitial()) {
     final TrainerRepository repo = TrainerRepository();
-
     on<TrainerApplyEvent>((event, emit) async {
       emit(TrainerApplyLoading());
-
       final result = await repo.applyForTrainer(event.form);
 
       result.fold(
-        (l) => emit(TrainerApplyFailure(l.toString())),
+        (l) => emit(TrainerApplyFailure(msg: l)),
         (r) => emit(TrainerApplyLoaded()),
       );
     });

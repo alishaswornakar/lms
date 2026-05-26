@@ -48,7 +48,7 @@ class _CreateCoursePageState extends State<CreateCoursePage> {
               ),
             ),
           ),
-          Container(color: Colors.blue),
+        Container(color: Colors.blue),
         ],
       ),
     );

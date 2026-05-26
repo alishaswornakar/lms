@@ -1,3 +1,5 @@
+
+
 part of 'category_bloc.dart';
 
 sealed class GetCategoryState extends Equatable {
