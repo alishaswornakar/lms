@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
+
 import 'package:lms/core/extension/context_extension.dart';
 import 'package:lms/features/auth/blocs/verify_otp/verify_otp_bloc.dart';
-import 'package:lms/features/auth/blocs/verify_otp/verify_otp_event.dart';
-import 'package:lms/features/auth/models/verify_otp.dart';
 
 import 'package:lms/features/home/pages/home.dart';
-
-
-import 'package:pin_code_fields/pin_code_fields.dart';
 
 class VerifyOtp extends StatelessWidget {
   const VerifyOtp({super.key, required this.email});
@@ -57,13 +54,13 @@ class VerifyOtp extends StatelessWidget {
 
                     onCompleted: (pin) {
                       context.read<VerifyOtpBloc>().add(
-                        OtpEvent(
-                          otpRequestModel: VerifyOtpRequestModel(
+                        VerifyOtpEvent(
+                          
                             email: email,
                             otp: pin,
                           ),
-                        ),
                       );
+                      
                     },
 
                     theme: MaterialPinTheme(

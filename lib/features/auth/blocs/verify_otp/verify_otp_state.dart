@@ -1,6 +1,11 @@
 part of 'verify_otp_bloc.dart';
 
-abstract class VerifyOtpState {}
+sealed class VerifyOtpState {
+  const VerifyOtpState();
+
+  @override
+  List<Object> get props => [];
+}
 
 class VerifyOtpInitial extends VerifyOtpState {}
 

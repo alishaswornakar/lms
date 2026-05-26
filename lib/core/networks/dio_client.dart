@@ -68,7 +68,7 @@ class DioClient {
     dio = Dio(
       BaseOptions(
         baseUrl: "https://lunar-lms.onrender.com/api/",
-        connectTimeout: const Duration(seconds: 20),
+        connectTimeout: const Duration(seconds: 40),
         receiveTimeout: const Duration(seconds: 10),
       ),
     );
@@ -91,6 +91,24 @@ class DioClient {
   }
 }
 
+// class AuthInterceptor extends Interceptor {
+//   @override
+//   void onRequest(
+//     RequestOptions options,
+//     RequestInterceptorHandler handler,
+//   ) async {
+//     final token = await TokenService.instance.getAccessToken();
+
+//     print("TOKEN => $token");
+
+//     if (token != null && token.isNotEmpty) {
+//       options.headers['Authorization'] = 'Bearer $token';
+//     }
+
+//     // IMPORTANT
+//     handler.next(options);
+//   }
+// }
 class AuthInterceptor extends Interceptor {
   @override
   void onRequest(
@@ -102,10 +120,14 @@ class AuthInterceptor extends Interceptor {
     print("TOKEN => $token");
 
     if (token != null && token.isNotEmpty) {
-      options.headers['Authorization'] = 'Bearer $token';
+      final formattedToken =
+          token.startsWith('Bearer ')
+              ? token
+              : 'Bearer $token';
+
+      options.headers['Authorization'] = formattedToken;
     }
 
-    // IMPORTANT
     handler.next(options);
   }
 }

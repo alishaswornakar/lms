@@ -13,4 +13,6 @@ class TokenModel {
   String? get access => null;
 
   String? get refresh => null;
+
+  get token => null;
 }
