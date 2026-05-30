@@ -18,6 +18,8 @@ final class ProfileLoaded extends ProfileState {
 
   @override
   List<Object> get props => [profile];
+
+ 
 }
 
 final class ProfileFailure extends ProfileState {

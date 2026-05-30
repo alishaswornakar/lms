@@ -58,13 +58,13 @@ class _ApplyTrainerState extends State<ApplyTrainer> {
                   onPressed: () {
                     int experienceYear =
                         int.tryParse(_experienceYears.text) ?? 0;
-                    final form = TraienrApplyForm(
+                    final form = TrainerApplyForm(
                       bio: _bioController.text,
                       expertizes: _expertiseController.text,
                       experienceYears: experienceYear,
                     );
                     context.read<TrainerApplyBloc>().add(
-                      TrainerApplyEvent(form),
+                      TrainerApplySubmitted(form),
                     );
                   },
                   child: Text("Submit"),

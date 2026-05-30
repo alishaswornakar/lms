@@ -1,9 +1,16 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 part of 'trainer_apply_bloc.dart';
 
-class TrainerApplyEvent extends Equatable {
-  const TrainerApplyEvent(this.form);
-  final TraienrApplyForm form;
+sealed class TrainerApplyEvent extends Equatable {
+  const TrainerApplyEvent();
+
+  @override
+  List<Object> get props => [];
+}
+
+class TrainerApplySubmitted extends TrainerApplyEvent {
+  final TrainerApplyForm  form;
+
+  const TrainerApplySubmitted(this.form);
 
   @override
   List<Object> get props => [form];

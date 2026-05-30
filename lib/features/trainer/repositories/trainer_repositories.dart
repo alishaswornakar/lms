@@ -8,7 +8,7 @@ import 'package:lms/features/trainer/model/trainer.dart';
 
 class TrainerRepository {
   final DioClient _client = DioClient();
-  Future<Either<String, String>> applyForTrainer(TraienrApplyForm form) async {
+  Future<Either<String, String>> applyForTrainer(TrainerApplyForm form) async {
     try {
       final acccessToken = await TokenService.instance.getAccessToken();
       await _client.dio.post(
